@@ -1,8 +1,8 @@
 param(
   [string]$RepoRoot = ".",
   [string]$OutDir = "generated/quick-sheets",
-  [string]$StartMarker = "<!-- QUICK_SHEET_START -->",
-  [string]$EndMarker = "<!-- QUICK_SHEET_END -->"
+  [string]$StartMarker = "QUICK_SHEET_START",
+  [string]$EndMarker = "QUICK_SHEET_END"
 )
 
 $ErrorActionPreference = "Stop"
@@ -21,19 +21,7 @@ $generatedAt = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 $combined = @()
 $combined += "# Master Quick Sheet - Interview Revision"
 $combined += ""
-$combined += "<!-- QUICK_SHEET_START -->"
-$combined += ""
-$combined += "## Quick Sheet"
-$combined += "- Generated from all source markdown quick sheets."
-$combined += "- Use this file for fast full-repo revision."
-$combined += "- Generated at: $generatedAt"
-$combined += ""
-$combined += "<!-- QUICK_SHEET_END -->"
-$combined += ""
-$combined += "## Table of Contents"
-$combined += "- [Main Content](#main-content)"
-$combined += ""
-$combined += "## Main Content"
+$combined += "Generated: $generatedAt"
 $combined += ""
 
 # Find all markdown files (exclude hidden/generated folders)
@@ -90,23 +78,15 @@ foreach ($file in $files) {
   $out = @()
   $out += "# Quick Sheet: $relative"
   $out += ""
-  $out += "<!-- QUICK_SHEET_START -->"
+  $out += "Source: $relative"
   $out += ""
-  $out += "## Quick Sheet"
-  $out += "- Source: $relative"
-  $out += "- Blocks captured: $($blocks.Count)"
-  $out += ""
+
+  $i = 1
   foreach ($block in $blocks) {
     $out += $block
+    $out += ""
+    $i++
   }
-  $out += ""
-  $out += "<!-- QUICK_SHEET_END -->"
-  $out += ""
-  $out += "## Table of Contents"
-  $out += "- [Main Content](#main-content)"
-  $out += ""
-  $out += "## Main Content"
-  $out += ""
 
   Set-Content -Path $outFile -Value $out -Encoding UTF8
   Write-Host "[OK] $relative"

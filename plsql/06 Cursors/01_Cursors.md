@@ -6,6 +6,36 @@
 - Cursor = pointer to query result rows.
 - Implicit cursor: automatic for DML and single-row `SELECT INTO`.
 - Explicit cursor: manual control for multi-row processing.
+- Lifecycle: `OPEN -> FETCH -> EXIT WHEN cursor%NOTFOUND -> CLOSE`.
+- Cursor FOR loop is the clean default for explicit cursor work.
+- `FOR UPDATE` and `WHERE CURRENT OF` support safe row-level updates.
+
+<!-- QUICK_SHEET_END -->
+
+## Table of Contents
+- [Types of Cursors](#types-of-cursors)
+- [Implicit Cursor Example](#implicit-cursor-example)
+- [Attributes of Implicit Cursor](#attributes-of-implicit-cursor)
+- [Explicit Cursor Example](#explicit-cursor-example)
+- [OPEN, FETCH, CLOSE](#open-fetch-close)
+- [Difference between implicit and explicit cursor](#difference-between-implicit-and-explicit-cursor)
+- [Cursor For Loop](#cursor-for-loop)
+- [Parameterized cursor](#parameterized-cursor)
+- [Cursor FOR UPDATE](#cursor-for-update)
+- [WHERE CURRENT OF](#where-current-of)
+- [Errors in Cursors](#errors-in-cursors)
+- [Ref Cursor](#ref-cursor)
+- [Ref cursor as an output parameter](#ref-cursor-as-an-output-parameter)
+
+# Cursor in PLSQL
+# PL/SQL Cursors
+
+<!-- QUICK_SHEET_START -->
+
+## Quick Sheet
+- Cursor = pointer to query result rows.
+- Implicit cursor: automatic for DML and single-row `SELECT INTO`.
+- Explicit cursor: manual control for multi-row processing.
 - Lifecycle: `OPEN -> FETCH -> EXIT WHEN %NOTFOUND -> CLOSE`.
 - Prefer cursor FOR loop unless low-level control is required.
 - Use `FOR UPDATE` + `WHERE CURRENT OF` for safe row-level updates.

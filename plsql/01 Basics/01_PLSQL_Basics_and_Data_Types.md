@@ -3,6 +3,38 @@
 <!-- QUICK_SHEET_START -->
 
 ## Quick Sheet
+- PL/SQL combines SQL with procedural control flow.
+- Block structure: `DECLARE`, `BEGIN`, `EXCEPTION`, `END`.
+- Use anchored types: `%TYPE` and `%ROWTYPE`.
+- Scalar types: NUMBER, VARCHAR2, CHAR, DATE, BOOLEAN.
+- Composite types: RECORD and collections.
+
+<!-- QUICK_SHEET_END -->
+
+## Table of Contents
+- [PL/SQL Basics and Data Types](#plsql-basics-and-data-types)
+  - [Quick Sheet](#quick-sheet)
+  - [Table of Contents](#table-of-contents)
+- [PL/SQL Basics and Data Types](#plsql-basics-and-data-types-1)
+  - [Quick Sheet](#quick-sheet-1)
+  - [Table of Contents](#table-of-contents-1)
+  - [Main Content](#main-content)
+  - [What Is PL/SQL](#what-is-plsql)
+  - [SQL vs PL/SQL](#sql-vs-plsql)
+  - [Block Structure](#block-structure)
+    - [Hello World](#hello-world)
+  - [Variables and Scope](#variables-and-scope)
+  - [Data Types](#data-types)
+    - [Scalar](#scalar)
+    - [Composite](#composite)
+  - [Anchored Declarations](#anchored-declarations)
+  - [Interview Insights](#interview-insights)
+  - [Related Notes](#related-notes)
+# PL/SQL Basics and Data Types
+
+<!-- QUICK_SHEET_START -->
+
+## Quick Sheet
 - PL/SQL block: DECLARE (optional), BEGIN-END (mandatory), EXCEPTION (optional).
 - SQL is declarative; PL/SQL adds procedural logic (variables, loops, exceptions).
 - Scalar types: NUMBER, VARCHAR2, DATE, BOOLEAN.
@@ -12,15 +44,24 @@
 <!-- QUICK_SHEET_END -->
 
 ## Table of Contents
-- [Main Content](#main-content)
-- [What Is PL/SQL](#what-is-plsql)
-- [SQL vs PL/SQL](#sql-vs-plsql)
-- [Block Structure](#block-structure)
-- [Variables and Scope](#variables-and-scope)
-- [Data Types](#data-types)
-- [Anchored Declarations](#anchored-declarations)
-- [Interview Insights](#interview-insights)
-- [Related Notes](#related-notes)
+- [PL/SQL Basics and Data Types](#plsql-basics-and-data-types)
+  - [Quick Sheet](#quick-sheet)
+  - [Table of Contents](#table-of-contents)
+- [PL/SQL Basics and Data Types](#plsql-basics-and-data-types-1)
+  - [Quick Sheet](#quick-sheet-1)
+  - [Table of Contents](#table-of-contents-1)
+  - [Main Content](#main-content)
+  - [What Is PL/SQL](#what-is-plsql)
+  - [SQL vs PL/SQL](#sql-vs-plsql)
+  - [Block Structure](#block-structure)
+    - [Hello World](#hello-world)
+  - [Variables and Scope](#variables-and-scope)
+  - [Data Types](#data-types)
+    - [Scalar](#scalar)
+    - [Composite](#composite)
+  - [Anchored Declarations](#anchored-declarations)
+  - [Interview Insights](#interview-insights)
+  - [Related Notes](#related-notes)
 
 ## Main Content
 

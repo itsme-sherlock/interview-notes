@@ -3,6 +3,28 @@
 <!-- QUICK_SHEET_START -->
 
 ## Quick Sheet
+- Arithmetic: `+`, `-`, `*`, `/`.
+- Comparison: `=`, `!=`, `>`, `<`, `>=`, `<=`.
+- Logical: `AND`, `OR`, `NOT`.
+- Branching: `IF`, `ELSIF`, `CASE`.
+- Loops: `LOOP`, `WHILE`, `FOR`, `REVERSE`.
+
+<!-- QUICK_SHEET_END -->
+
+## Table of Contents
+- [Arithmetic Operators](#arithmetic-operators)
+- [Comparison Operators](#comparison-operators)
+- [Logical Operators](#logical-operators)
+- [assignment Operators](#assignment-operators)
+- [Conditional Statements](#conditional-statements)
+- [Loops](#loops)
+
+# module 4 Operators
+# Operators, Control Statements and Loops
+
+<!-- QUICK_SHEET_START -->
+
+## Quick Sheet
 - Arithmetic in PL/SQL: `+`, `-`, `*`, `/`.
 - Comparison: `=`, `!=`, `>`, `<`, `>=`, `<=`.
 - Logical: `AND`, `OR`, `NOT`.
