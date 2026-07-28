@@ -1,4 +1,5 @@
-﻿-- PL/SQL Basics Block Examples
+```sql
+-- PL/SQL Basics Block Examples
 -- Category: Practice Examples
 
 -- Example 1: Basic block with variable declaration and output
@@ -43,3 +44,4 @@ BEGIN
   END IF;
 END;
 /
+```

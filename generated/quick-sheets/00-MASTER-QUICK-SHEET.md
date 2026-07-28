@@ -1,42 +1,6 @@
 ﻿# Master Quick Sheet - Interview Revision
 
-<!-- QUICK_SHEET_START -->
-
-## Quick Sheet
-- Generated from all source markdown quick sheets.
-- Use this file for fast full-repo revision.
-- Generated at: 2026-07-26 21:11:43
-
-<!-- QUICK_SHEET_END -->
-
-## Table of Contents
-- [Main Content](#main-content)
-
-## Main Content
-
----
-
-## REPO_AUDIT_REPORT.md
-
-
-## Quick Sheet
-- Scope audited: all original SQL, PL/SQL, shell scripting, generated quick-sheet, and script files.
-- Main issues found: duplication in PL/SQL notes, corrupted partitioning file, inconsistent naming/foldering.
-- Main actions: merged duplicates, normalized structure, standardized markdown format, regenerated quick sheets.
-- Status: repository now organized for SQL, PL/SQL, and Shell Scripting only.
-
-
----
-
-## plsql\README.md
-
-
-## Quick Sheet
-- Focus: PL/SQL blocks, control flow, cursors, and interview-ready coding patterns.
-- Study order: Basics -> Control Statements -> Cursors -> Practice Scripts -> Cheat Sheets.
-- High-yield interview topics: %TYPE/%ROWTYPE, exception handling, cursor for loop, FOR UPDATE.
-- Practice rule: prefer set-based SQL first, then PL/SQL only when row-wise logic is required.
-
+Generated: 2026-07-28 09:49:16
 
 ---
 
@@ -44,6 +8,7 @@
 
 
 ## Quick Sheet
+
 - PL/SQL block: DECLARE (optional), BEGIN-END (mandatory), EXCEPTION (optional).
 - SQL is declarative; PL/SQL adds procedural logic (variables, loops, exceptions).
 - Scalar types: NUMBER, VARCHAR2, DATE, BOOLEAN.
@@ -57,6 +22,7 @@
 
 
 ## Quick Sheet
+
 - Arithmetic in PL/SQL: `+`, `-`, `*`, `/`.
 - Comparison: `=`, `!=`, `>`, `<`, `>=`, `<=`.
 - Logical: `AND`, `OR`, `NOT`.
@@ -70,50 +36,13 @@
 
 
 ## Quick Sheet
+
 - Cursor = pointer to query result rows.
 - Implicit cursor: automatic for DML and single-row `SELECT INTO`.
 - Explicit cursor: manual control for multi-row processing.
-- Lifecycle: `OPEN -> FETCH -> EXIT WHEN %NOTFOUND -> CLOSE`.
-- Prefer cursor FOR loop unless low-level control is required.
-- Use `FOR UPDATE` + `WHERE CURRENT OF` for safe row-level updates.
-
-
----
-
-## plsql\Cheat Sheets\01_PLSQL_Quick_Revision.md
-
-
-## Quick Sheet
-- Block sections: DECLARE (optional), BEGIN-END (mandatory), EXCEPTION (optional).
-- Anchoring: `%TYPE` for column type, `%ROWTYPE` for full row structure.
-- Control flow: IF/ELSIF/CASE and LOOP/WHILE/FOR.
-- Cursors: implicit for simple SQL, explicit for multi-row control.
-- Interview rule: use SQL first; PL/SQL for procedural orchestration.
-
-
----
-
-## plsql\Cheat Sheets\02_PLSQL_Cursors_Quick_Revision.md
-
-
-## Quick Sheet
-- Cursor: pointer to query result rows.
-- Lifecycle: OPEN -> FETCH -> EXIT WHEN %NOTFOUND -> CLOSE.
-- Cursor FOR loop auto-manages lifecycle.
-- Locking: `FOR UPDATE` + `WHERE CURRENT OF` for safe row updates.
-- REF CURSOR: dynamic query result handoff, often with `SYS_REFCURSOR`.
-
-
----
-
-## Shell Scripting\README.md
-
-
-## Quick Sheet
-- Focus: shell scripting for database workflows (SQL/PLSQL automation).
-- Study order: Shell basics -> automation tasks -> interview checklist.
-- High-yield interview topics: input validation, exit codes, logging, idempotent scripts.
-- Production rule: validate first, log everything, fail fast on errors.
+- Lifecycle: `OPEN -> FETCH -> EXIT WHEN cursor%NOTFOUND -> CLOSE`.
+- Cursor FOR loop is the clean default for explicit cursor work.
+- `FOR UPDATE` and `WHERE CURRENT OF` support safe row-level updates.
 
 
 ---
@@ -122,6 +51,7 @@
 
 
 ## Quick Sheet
+
 - Start scripts with `#!/bin/bash`.
 - Validate inputs early and return non-zero on failures.
 - Quote variables: `"$var"`.
@@ -135,6 +65,7 @@
 
 
 ## Quick Sheet
+
 - Common DB automation tasks: export data, run SQL, validate files, backup outputs.
 - Essential flow: validate -> execute -> verify -> log.
 - Always capture exit status and write timestamped logs.
@@ -147,6 +78,7 @@
 
 
 ## Quick Sheet
+
 - Know script structure, permissions, args, and exit codes.
 - Be ready with file validation, logging, and SQLPlus integration patterns.
 - Practice one mini automation flow end-to-end.
@@ -155,27 +87,17 @@
 
 ---
 
-## Shell Scripting\Cheat Sheets\01_Shell_Scripting_Quick_Revision.md
+## sql\01 Fundamentals\01_Pseudo_Columns_Guide.md
 
 
 ## Quick Sheet
-- Script header: `#!/bin/bash`.
-- Validate args and fail fast with non-zero exit code.
-- Use `if`, `case`, loops, and file-test operators (`-f`, `-r`, `-w`, `-x`, `-s`).
-- Redirect logs using `>`, `>>`, and `2>&1`.
-- For DB automation: run SQLPlus, capture status, log outcome.
 
-
----
-
-## sql\README.md
-
-
-## Quick Sheet
-- Focus: Oracle SQL for interviews and practical database work.
-- Study order: Fundamentals -> Functions -> Views -> Indexes -> Performance -> Interview revision.
-- High-yield interview topics: indexing strategy, view updatability, window functions, partition pruning.
-- Daily revision: one topic note + one cheat sheet + two query drills.
+- Pseudo columns appear like regular columns but are not stored; they provide metadata about rows or the session.
+- `ROWNUM`: sequential row counter from query result (assigned before ORDER BY).
+- `ROWID`: physical row identifier in the table; can change with TRUNCATE/ALTER.
+- `SYSDATE` and `SYSTIMESTAMP`: current date/time; SYSTIMESTAMP includes fractional seconds and timezone.
+- `USER` and `UID`: current database user name and session identifier.
+- `LEVEL`: hierarchy level in CONNECT BY queries (hierarchical data).
 
 
 ---
@@ -184,11 +106,12 @@
 
 
 ## Quick Sheet
-- Character: `UPPER`, `LOWER`, `INITCAP`, `SUBSTR`, `INSTR`, `REPLACE`, `TRIM`.
-- Numeric: `ROUND`, `TRUNC`, `MOD`, `CEIL`, `FLOOR`, `ABS`, `POWER`.
-- Date: `SYSDATE`, `CURRENT_DATE`, `ADD_MONTHS`, `MONTHS_BETWEEN`, `LAST_DAY`.
-- Null handling: `NVL`, `NVL2`, `COALESCE`, `NULLIF`.
-- Conversion: `TO_CHAR`, `TO_DATE`, `TO_NUMBER`, `CAST`.
+
+- Character functions: `UPPER`, `LOWER`, `INITCAP`, `SUBSTR`, `INSTR`, `REPLACE`, `TRANSLATE`, `TRIM`, `LPAD`, `RPAD`.
+- Numeric functions: `ROUND`, `TRUNC`, `MOD`, `CEIL`, `FLOOR`, `ABS`, `SIGN`, `POWER`.
+- Date functions: `SYSDATE`, `CURRENT_DATE`, `ADD_MONTHS`, `MONTHS_BETWEEN`, `NEXT_DAY`, `LAST_DAY`, `EXTRACT`.
+- General functions: `GREATEST`, `LEAST`, `CONCAT`, `CASE`, `DECODE`.
+- Null and conversion: `NVL`, `NVL2`, `COALESCE`, `NULLIF`, `TO_CHAR`, `TO_DATE`, `TO_NUMBER`, `CAST`.
 
 
 ---
@@ -197,11 +120,12 @@
 
 
 ## Quick Sheet
-- View: virtual table storing query text.
-- Materialized view: physical data snapshot with refresh strategy.
-- Simple view is usually updatable; complex view often needs `INSTEAD OF` trigger.
-- `WITH CHECK OPTION`: enforce view filter for DML through the view.
-- `WITH READ ONLY`: block DML through the view.
+
+- View: virtual table defined by a query; no data storage of its own.
+- Use views for abstraction, security, and query simplification.
+- Updatable views are usually simple single-table views.
+- `WITH CHECK OPTION` enforces the view predicate on DML.
+- Materialized views store query results physically and need a refresh strategy.
 
 
 ---
@@ -210,11 +134,12 @@
 
 
 ## Quick Sheet
-- Index stores key values with ROWID references.
-- B-tree: default, best for high-cardinality columns.
-- Bitmap: best for low-cardinality analytic workloads.
-- Composite index depends on leading-column usage.
-- Optimizer may still choose full table scan based on cost.
+
+- Index speeds up reads by storing key value + ROWID.
+- B-tree is the default and suits high-cardinality columns.
+- Bitmap is better for low-cardinality analytics, not high-concurrency OLTP.
+- Composite indexes depend on the leading-column rule.
+- Execution plan and optimizer choice determine whether an index is used.
 
 
 ---
@@ -223,11 +148,12 @@
 
 
 ## Quick Sheet
-- Window function computes across related rows while preserving row detail.
-- `OVER` defines partition and ordering scope.
-- Ranking: `ROW_NUMBER`, `RANK`, `DENSE_RANK`.
-- Relative row access: `LAG`, `LEAD`.
-- Running totals: `SUM(...) OVER (...)`.
+
+- Window functions compute across related rows while keeping row detail.
+- `OVER` defines the partition and ordering scope.
+- Key ranking functions: `ROW_NUMBER`, `RANK`, `DENSE_RANK`.
+- `LAG` and `LEAD` compare previous and next rows.
+- Running totals are built with `SUM(...) OVER (...)`.
 
 
 ---
@@ -236,23 +162,11 @@
 
 
 ## Quick Sheet
-- Partitioning splits one large table into smaller physical segments.
-- It improves manageability and query performance via partition pruning.
-- Common strategies: range, list, hash, composite.
-- Good partition key choice is critical for balanced data and query targeting.
+
+- Partitioning splits one logical table into multiple physical segments.
+- Common methods: range, list, hash, composite.
+- Partition pruning scans only relevant partitions when the partition key is in the predicate.
 - Partitioning complements indexes; it does not replace them.
-
-
----
-
-## sql\Cheat Sheets\01_SQL_Quick_Revision.md
-
-
-## Quick Sheet
-- Single-row functions: UPPER, LOWER, SUBSTR, INSTR, NVL, COALESCE, TO_CHAR, TO_DATE.
-- Views: virtual, no data storage; materialized views: physical storage + refresh.
-- Indexes: B-tree for high cardinality, bitmap for low cardinality analytics.
-- Window functions: ROW_NUMBER, RANK, DENSE_RANK, LAG, LEAD, SUM OVER.
-- Partitioning: range/list/hash/composite; partition pruning is key optimization.
+- Good partition-key choice is critical for balance and performance.
 
 

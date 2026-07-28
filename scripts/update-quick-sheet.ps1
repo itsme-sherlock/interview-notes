@@ -1,8 +1,8 @@
 param(
   [string]$RepoRoot = ".",
   [string]$OutDir = "generated/quick-sheets",
-  [string]$StartMarker = "QUICK_SHEET_START",
-  [string]$EndMarker = "QUICK_SHEET_END"
+  [string]$StartMarker = "<!-- QUICK_SHEET_START -->",
+  [string]$EndMarker = "<!-- QUICK_SHEET_END -->"
 )
 
 $ErrorActionPreference = "Stop"
@@ -70,28 +70,9 @@ foreach ($file in $files) {
     continue
   }
 
-  # Create individual quick sheet file
+  # Add to master sheet only (no individual quick sheet files)
   $relative = $file.FullName.Substring($repoPath.Length).TrimStart('\')
-  $safeName = ($relative -replace "[\\/:*?""<>|]", "_") -replace "\.md$", ""
-  $outFile = Join-Path $outPath ($safeName + ".quick.md")
 
-  $out = @()
-  $out += "# Quick Sheet: $relative"
-  $out += ""
-  $out += "Source: $relative"
-  $out += ""
-
-  $i = 1
-  foreach ($block in $blocks) {
-    $out += $block
-    $out += ""
-    $i++
-  }
-
-  Set-Content -Path $outFile -Value $out -Encoding UTF8
-  Write-Host "[OK] $relative"
-
-  # Add to master sheet
   $combined += "---"
   $combined += ""
   $combined += "## $relative"
@@ -106,5 +87,4 @@ foreach ($file in $files) {
 Set-Content -Path $combinedPath -Value $combined -Encoding UTF8
 
 Write-Host ""
-Write-Host "✓ Quick sheets generated in: $outPath"
-Write-Host "✓ Master sheet: $combinedPath"
+Write-Host "Master quick sheet generated: $combinedPath"
