@@ -1,17 +1,18 @@
-# Exception Handling in Oracle PL/SQL Guide
+# Exception Handling in Oracle PL/SQL: Comprehensive Guide
 
 <!-- QUICK_SHEET_START -->
 
 ## Quick Sheet
 
-- **Exception** = Error/event that interrupts normal program flow (like "file not found", "division by zero", "constraint violation").
-- **Predefined exceptions** = Oracle-defined errors with PL/SQL names: NO_DATA_FOUND, TOO_MANY_ROWS, ZERO_DIVIDE, DUP_VAL_ON_INDEX, VALUE_ERROR, etc.
-- **Non-predefined exceptions** = Oracle errors without built-in PL/SQL names; assign them using PRAGMA EXCEPTION_INIT (e.g., lock timeout, resource limit exceeded).
-- **User-defined exceptions** = Custom errors you create for business logic (e.g., INVALID_SALARY, DUPLICATE_ACCOUNT, AGE_OUT_OF_RANGE).
-- **EXCEPTION block** = Catches errors raised in BEGIN block; matches exception by name with WHEN clause; if matched, executes recovery code.
-- **RAISE statement** = Throws an exception (predefined, non-predefined, or user-defined); stops execution; propagates to caller if not caught.
-- **Exception scope** = Caught at block level; if not caught in current block, propagates to outer block; if uncaught, terminates program and rolls back uncommitted changes.
-- **WHEN OTHERS** = Catch-all clause for exceptions not explicitly listed; captures all unmatched exceptions (use cautiously; may hide bugs).
+- **Exception** = Runtime error or abnormal event (NO_DATA_FOUND, TOO_MANY_ROWS, ZERO_DIVIDE, constraint violation, lock timeout, resource limit).
+- **Predefined exceptions** = Oracle-defined (20+ built-in): NO_DATA_FOUND, TOO_MANY_ROWS, ZERO_DIVIDE, DUP_VAL_ON_INDEX, VALUE_ERROR, INVALID_CURSOR, STORAGE_ERROR.
+- **Non-predefined exceptions** = Oracle errors without PL/SQL names; associate with error numbers using PRAGMA EXCEPTION_INIT (ORA-00060 deadlock, ORA-30006 lock timeout).
+- **User-defined exceptions** = Custom business rules (INVALID_SALARY, INSUFFICIENT_FUNDS, DUPLICATE_ACCOUNT); name them, RAISE them, catch them.
+- **EXCEPTION block** = Catches errors; matches BY NAME (not error code); WHEN exc_name THEN recovery_code; unmatched exceptions propagate upward.
+- **RAISE statement** = Throws exception (predefined, non-predefined, or user-defined); stops execution; propagates to outer block if uncaught.
+- **Exception scope** = Caught at block level; if not caught, propagates to enclosing block; if uncaught at program boundary, ROLLBACK all uncommitted DML.
+- **Best practice** = Catch specific exceptions; use WHEN OTHERS only as safety net; log errors with SQLCODE/SQLERRM; avoid silent failures; test edge cases.
+- **Common pitfall** = Generic WHEN OTHERS without logging hides bugs; catch-and-ignore patterns lose error context; mixing exception handling with COMMIT/ROLLBACK logic.
 
 <!-- QUICK_SHEET_END -->
 
